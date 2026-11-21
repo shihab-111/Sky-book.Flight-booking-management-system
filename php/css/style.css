@@ -1,0 +1,128 @@
+/* css/style.css — Simple, Clean Responsive UI for SkyBook PHP (VS Code Ready) */
+:root {
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --ink: #0F172A;
+  --muted: #475569;
+  --border: #E2E8F0;
+  --accent: #1D4ED8;
+  --accent-hover: #1E40AF;
+  --danger: #B91C1C;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.5;
+}
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); font-size: 0.875rem; }
+.text-right { text-align: right; }
+.container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 20; }
+.nav-bar { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; }
+.brand { font-weight: 800; font-size: 1.15rem; color: var(--ink); text-decoration: none; }
+.nav-links { display: flex; gap: 24px; }
+.nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9375rem; font-weight: 500; }
+.nav-links a:hover, .nav-links a.active { color: var(--ink); font-weight: 600; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 16px; border-radius: 8px; font-size: 0.875rem; font-weight: 600;
+  border: 1px solid transparent; cursor: pointer; text-decoration: none; white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-outline { background: var(--surface); color: var(--ink); border-color: var(--border); }
+.btn-danger { background: var(--surface); color: var(--danger); border-color: #FECACA; }
+
+/* Hero Banner Photo — tall, clean framing with search bar pushed down cleanly */
+.hero-banner {
+  position: relative;
+  overflow: hidden;
+  background: #0F172A;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  padding: 80px 0 88px;
+}
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.hero-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,23,42,0.82), rgba(15,23,42,0.32), rgba(15,23,42,0.12)); }
+.hero-content { position: relative; z-index: 1; width: 100%; }
+.hero-content h1 { margin: 0; color: #fff; font-size: clamp(1.85rem, 3.6vw, 3rem); max-width: 22ch; line-height: 1.15; }
+.hero-content p { color: #E2E8F0; margin: 12px 0 0; max-width: 54ch; }
+
+/* From / To / Date / Class Search Panel sitting cleanly at bottom edge of banner */
+.search-wrapper { position: relative; z-index: 10; margin-top: -52px; }
+.search-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+}
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label { font-size: 0.8125rem; font-weight: 500; color: var(--muted); }
+.field input, .field select {
+  height: 42px; padding: 0 12px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--surface); color: var(--ink); font: inherit;
+}
+
+/* Sections & Cards */
+.section { padding: 36px 0; }
+.section-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 18px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; }
+.empty-box { text-align: center; padding: 40px; }
+.alert-error { padding: 12px 14px; border-radius: 8px; background: #FEF2F2; border: 1px solid #FECACA; color: var(--danger); margin: 14px 0; font-size: 0.875rem; }
+
+/* Flight Rows */
+.flight-list { display: flex; flex-direction: column; gap: 12px; }
+.flight-row { display: grid; grid-template-columns: 1.2fr 1.6fr 1fr; gap: 20px; align-items: center; }
+.route-times { display: flex; align-items: center; gap: 14px; }
+.time { font-size: 1.2rem; font-weight: 700; }
+.route-line { flex: 1; height: 1px; background: var(--border); }
+.flight-action { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
+.price { font-size: 1.2rem; font-weight: 700; }
+
+/* Pure CSS Seat Map */
+.split-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 24px; margin-top: 20px; align-items: start; }
+.seat-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 16px; }
+.seat-tile { position: relative; cursor: pointer; }
+.seat-tile input { position: absolute; opacity: 0; pointer-events: none; }
+.seat-tile span {
+  display: flex; align-items: center; justify-content: center; height: 42px;
+  border: 1px solid #CBD5E1; border-radius: 6px; font-family: ui-monospace, monospace; font-size: 0.8rem;
+}
+.seat-tile input:checked + span { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.seat-tile.is-booked { cursor: not-allowed; }
+.seat-tile.is-booked span { background: #F1F5F9; border-color: var(--border); color: #94A3B8; }
+
+/* Forms & Tables */
+.form-stack { display: flex; flex-direction: column; gap: 14px; }
+.auth-card { max-width: 420px; margin: 24px auto; padding: 28px; }
+.admin-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.data-table th, .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); text-align: left; }
+.data-table th { background: #F8FAFC; color: var(--muted); font-weight: 600; }
+
+.site-footer { border-top: 1px solid var(--border); background: var(--surface); padding: 22px 0; margin-top: 40px; }
+.footer-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.875rem; color: var(--muted); }
+.footer-links { display: flex; gap: 18px; }
+.footer-links a { color: var(--muted); text-decoration: none; }
+
+@media (max-width: 860px) {
+  .hero-banner { min-height: 320px; padding: 56px 0 72px; }
+  .search-box, .flight-row, .split-grid, .admin-grid { grid-template-columns: 1fr; }
+  .nav-bar { flex-wrap: wrap; height: auto; padding: 12px 0; }
+}

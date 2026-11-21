@@ -1,0 +1,8 @@
+{
+  "name": "SkyBook — Flight Ticket Booking System",
+  "description": "Responsive database-driven flight ticket booking system with interactive cabin seat selection, automated refund cancellation, admin CRUD console, audit trail, SQL reports, and XAMPP PHP templates.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
